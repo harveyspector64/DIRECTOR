@@ -1,0 +1,30 @@
+sources:
+  - name: Deadline Film
+    type: rss
+    url: https://deadline.com/v/film/feed/
+  - name: Variety Film
+    type: rss
+    url: https://variety.com/v/film/feed/
+  - name: Hollywood Reporter Film
+    type: rss
+    url: https://www.hollywoodreporter.com/c/film/feed/
+  - name: Screen Daily
+    type: rss
+    url: https://www.screendaily.com/directors/rss
+  - name: IndieWire Film
+    type: rss
+    url: https://www.indiewire.com/c/film/rss/
+
+domains:
+  - deadline.com
+  - variety.com
+  - hollywoodreporter.com
+  - screendaily.com
+  - indiewire.com
+  - thewrap.com
+  - deadline.com
+  - slashfilm.com
+  - rollingstone.com
+  - collider.com
+  - theplaylist.net
+  - deadline.com

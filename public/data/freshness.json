@@ -1,0 +1,10 @@
+{
+  "last_run": "2024-08-15",
+  "director_count": 2,
+  "last_verified_30d_percent": 50,
+  "last_verified_90d_percent": 100,
+  "availability_distribution": {
+    "LIKELY_OPEN": 1,
+    "SOFT_BUSY": 1
+  }
+}

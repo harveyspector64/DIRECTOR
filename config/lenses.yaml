@@ -1,0 +1,26 @@
+lenses:
+  - name: Open Action Comedy
+    description: Action-comedy directors likely open within 90 days.
+    filters:
+      lane: action
+      availability: LIKELY_OPEN
+      recency_years: 6
+    sort:
+      field: assignment_score
+      direction: desc
+    export_columns:
+      - name
+      - availability.status
+      - recent_features[0].title
+  - name: Hard Busy in Prep
+    description: Directors in prep or filming with high confidence.
+    filters:
+      availability: HARD_BUSY
+      confidence: high
+    sort:
+      field: last_feature_directed_year
+      direction: desc
+    export_columns:
+      - name
+      - availability.status
+      - current_events

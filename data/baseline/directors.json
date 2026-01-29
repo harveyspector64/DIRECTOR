@@ -1,0 +1,94 @@
+[
+  {
+    "id": "Q12345",
+    "name": "Ava Ramos",
+    "aliases": ["Ava R."],
+    "countries": ["United States"],
+    "last_feature_directed_year": 2022,
+    "last_feature_released_year": 2023,
+    "recent_features": [
+      {
+        "title": "Neon Strike",
+        "year": 2022,
+        "film_id": "Q9981",
+        "genres_normalized": ["action", "thriller"],
+        "top_cast": ["Q200", "Q201"]
+      },
+      {
+        "title": "Midnight Signal",
+        "year": 2019,
+        "film_id": "Q9982",
+        "genres_normalized": ["thriller", "crime"],
+        "top_cast": ["Q202", "Q203"]
+      }
+    ],
+    "lane_fingerprint": {
+      "action": 0.7,
+      "thriller": 0.6,
+      "crime": 0.4,
+      "comedy": 0.1,
+      "horror": 0.1,
+      "scifi": 0.2,
+      "drama": 0.3,
+      "romance": 0.0,
+      "family": 0.0,
+      "animation": 0.0
+    },
+    "assignment_score": 0.5,
+    "scale_proxy": "mid",
+    "cast_adjacency_top": [
+      { "actor_id": "Q200", "actor_name": "Jordan Lee", "weight": 0.8, "last_worked_year": 2022 },
+      { "actor_id": "Q201", "actor_name": "Maya Cruz", "weight": 0.6, "last_worked_year": 2022 }
+    ],
+    "availability": {
+      "status": "LIKELY_OPEN",
+      "next_likely_open_window": { "start": "2024-09-01", "end": "2025-01-15" },
+      "confidence": "med",
+      "last_verified": "2024-08-15"
+    },
+    "current_events": ["evt_Q12345_NeonReboot_Deadline_2024-05-11"],
+    "data_freshness": { "last_event_seen": "2024-05-11", "last_profile_rebuild": "2024-08-15" }
+  },
+  {
+    "id": "Q67890",
+    "name": "Kenji Park",
+    "aliases": [],
+    "countries": ["South Korea"],
+    "last_feature_directed_year": 2021,
+    "last_feature_released_year": 2021,
+    "recent_features": [
+      {
+        "title": "Sea of Glass",
+        "year": 2021,
+        "film_id": "Q9983",
+        "genres_normalized": ["drama"],
+        "top_cast": ["Q204", "Q205"]
+      }
+    ],
+    "lane_fingerprint": {
+      "action": 0.1,
+      "thriller": 0.2,
+      "crime": 0.1,
+      "comedy": 0.0,
+      "horror": 0.0,
+      "scifi": 0.0,
+      "drama": 0.8,
+      "romance": 0.2,
+      "family": 0.0,
+      "animation": 0.0
+    },
+    "assignment_score": 0.7,
+    "scale_proxy": "small",
+    "cast_adjacency_top": [
+      { "actor_id": "Q204", "actor_name": "Sun-mi Han", "weight": 0.7, "last_worked_year": 2021 }
+    ],
+    "availability": {
+      "status": "SOFT_BUSY",
+      "next_likely_open_window": null,
+      "confidence": "low",
+      "last_verified": "2024-06-02"
+    },
+    "current_events": ["evt_Q67890_LakeHouse_Variety_2024-06-01"],
+    "data_freshness": { "last_event_seen": "2024-06-01", "last_profile_rebuild": "2024-08-15" }
+  }
+]

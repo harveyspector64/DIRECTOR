@@ -1,0 +1,40 @@
+[
+  {
+    "id": "evt_Q12345_NeonReboot_Deadline_2024-05-11",
+    "director_id": "Q12345",
+    "project_title": "Neon Reboot",
+    "project_type": "FEATURE",
+    "status": "IN_TALKS",
+    "dates": null,
+    "confidence": "med",
+    "last_verified": "2024-08-15",
+    "sources": [
+      {
+        "url": "https://deadline.com/example-neon-reboot",
+        "outlet": "Deadline",
+        "title": "Ava Ramos in talks to direct Neon Reboot",
+        "published_date": "2024-05-11",
+        "snippet": "Ava Ramos is in talks to direct the action reboot."
+      }
+    ]
+  },
+  {
+    "id": "evt_Q67890_LakeHouse_Variety_2024-06-01",
+    "director_id": "Q67890",
+    "project_title": "The Lake House",
+    "project_type": "FEATURE",
+    "status": "ATTACHED",
+    "dates": null,
+    "confidence": "low",
+    "last_verified": "2024-08-15",
+    "sources": [
+      {
+        "url": "https://variety.com/example-lake-house",
+        "outlet": "Variety",
+        "title": "Kenji Park attached to The Lake House",
+        "published_date": "2024-06-01",
+        "snippet": "Kenji Park is attached to direct the drama feature."
+      }
+    ]
+  }
+]
