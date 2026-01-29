@@ -4,54 +4,59 @@
   "required": [
     "id",
     "name",
-    "aliases",
+    "last_feature_directed_year",
     "recent_features",
     "lane_fingerprint",
     "assignment_score",
-    "scale_proxy",
-    "cast_adjacency_top",
-    "availability",
-    "current_events",
-    "data_freshness"
+    "cast_adjacency_top"
   ],
   "properties": {
     "id": { "type": "string" },
     "name": { "type": "string" },
-    "aliases": { "type": "array", "items": { "type": "string" } },
-    "countries": { "type": "array", "items": { "type": "string" } },
     "last_feature_directed_year": { "type": "integer" },
-    "last_feature_released_year": { "type": "integer" },
     "recent_features": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["title", "year", "genres_normalized", "top_cast"],
+        "required": ["film_id", "title", "year", "genres_raw", "genres_normalized", "top_cast"],
         "properties": {
+          "film_id": { "type": "string" },
           "title": { "type": "string" },
           "year": { "type": "integer" },
-          "film_id": { "type": "string" },
+          "genres_raw": { "type": "array", "items": { "type": "string" } },
           "genres_normalized": { "type": "array", "items": { "type": "string" } },
-          "top_cast": { "type": "array", "items": { "type": "string" } }
+          "top_cast": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name"],
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "order": { "type": ["integer", "null"] }
+              }
+            }
+          }
         }
       }
     },
     "lane_fingerprint": {
       "type": "object",
       "properties": {
-        "action": { "type": "number" },
-        "thriller": { "type": "number" },
-        "crime": { "type": "number" },
-        "comedy": { "type": "number" },
-        "horror": { "type": "number" },
-        "scifi": { "type": "number" },
-        "drama": { "type": "number" },
-        "romance": { "type": "number" },
-        "family": { "type": "number" },
-        "animation": { "type": "number" }
+        "Action": { "type": "number" },
+        "Comedy": { "type": "number" },
+        "Thriller": { "type": "number" },
+        "Crime": { "type": "number" },
+        "Horror": { "type": "number" },
+        "Drama": { "type": "number" },
+        "Sci-Fi": { "type": "number" },
+        "Romance": { "type": "number" },
+        "Family/YA": { "type": "number" },
+        "Animation": { "type": "number" },
+        "Other": { "type": "number" }
       }
     },
     "assignment_score": { "type": "number" },
-    "scale_proxy": { "type": "string", "enum": ["small", "mid", "large"] },
     "cast_adjacency_top": {
       "type": "array",
       "items": {
@@ -65,33 +70,6 @@
         }
       }
     },
-    "availability": {
-      "type": "object",
-      "required": ["status", "confidence", "last_verified"],
-      "properties": {
-        "status": {
-          "type": "string",
-          "enum": ["HARD_BUSY", "SOFT_BUSY", "IN_POST", "LIKELY_OPEN", "UNKNOWN"]
-        },
-        "next_likely_open_window": {
-          "type": ["object", "null"],
-          "properties": {
-            "start": { "type": "string" },
-            "end": { "type": "string" }
-          }
-        },
-        "confidence": { "type": "string", "enum": ["low", "med", "high"] },
-        "last_verified": { "type": "string" }
-      }
-    },
-    "current_events": { "type": "array", "items": { "type": "string" } },
-    "data_freshness": {
-      "type": "object",
-      "required": ["last_profile_rebuild"],
-      "properties": {
-        "last_event_seen": { "type": "string" },
-        "last_profile_rebuild": { "type": "string" }
-      }
-    }
+    "fame_proxy": { "type": "integer" }
   }
 }

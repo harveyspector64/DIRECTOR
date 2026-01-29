@@ -1,18 +1,8 @@
 [
-  {
-    "id": "Q200",
-    "name": "Jordan Lee",
-    "recent_director_edges": [
-      { "director_id": "Q12345", "director_name": "Ava Ramos", "film_title": "Neon Strike", "year": 2022 }
-    ],
-    "adjacency_top": [{ "director_id": "Q12345", "weight": 0.9 }]
-  },
-  {
-    "id": "Q204",
-    "name": "Sun-mi Han",
-    "recent_director_edges": [
-      { "director_id": "Q67890", "director_name": "Kenji Park", "film_title": "Sea of Glass", "year": 2021 }
-    ],
-    "adjacency_top": [{ "director_id": "Q67890", "weight": 0.8 }]
-  }
+  { "id": "Q200", "name": "Jordan Lee" },
+  { "id": "Q201", "name": "Maya Cruz" },
+  { "id": "Q202", "name": "Elena Ward" },
+  { "id": "Q203", "name": "Luis Park" },
+  { "id": "Q204", "name": "Sun-mi Han" },
+  { "id": "Q205", "name": "Jae-Min Lim" }
 ]

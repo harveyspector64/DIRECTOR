@@ -1,5 +1,38 @@
 [
-  { "id": "Q9981", "title": "Neon Strike", "year": 2022, "director_id": "Q12345" },
-  { "id": "Q9982", "title": "Midnight Signal", "year": 2019, "director_id": "Q12345" },
-  { "id": "Q9983", "title": "Sea of Glass", "year": 2021, "director_id": "Q67890" }
+  {
+    "id": "Q9981",
+    "title": "Neon Strike",
+    "year": 2022,
+    "director_id": "Q12345",
+    "genres_raw": ["action film", "thriller film"],
+    "genres_normalized": ["Action", "Thriller"],
+    "top_cast": [
+      { "id": "Q200", "name": "Jordan Lee", "order": 1 },
+      { "id": "Q201", "name": "Maya Cruz", "order": 2 }
+    ]
+  },
+  {
+    "id": "Q9982",
+    "title": "Midnight Signal",
+    "year": 2019,
+    "director_id": "Q12345",
+    "genres_raw": ["thriller film", "crime film"],
+    "genres_normalized": ["Crime", "Thriller"],
+    "top_cast": [
+      { "id": "Q202", "name": "Elena Ward", "order": 1 },
+      { "id": "Q203", "name": "Luis Park", "order": 2 }
+    ]
+  },
+  {
+    "id": "Q9983",
+    "title": "Sea of Glass",
+    "year": 2021,
+    "director_id": "Q67890",
+    "genres_raw": ["drama film"],
+    "genres_normalized": ["Drama"],
+    "top_cast": [
+      { "id": "Q204", "name": "Sun-mi Han", "order": 1 },
+      { "id": "Q205", "name": "Jae-Min Lim", "order": 2 }
+    ]
+  }
 ]

@@ -1,62 +1,63 @@
 #!/usr/bin/env python3
 import json
 import random
-from datetime import datetime, timedelta
+from collections import Counter, defaultdict
+from datetime import datetime
 
-from utils import write_json
+LANE_COUNT = 2
+
+
+def build_lane_signature(lane_fingerprint: dict) -> str:
+    lanes = sorted(lane_fingerprint.items(), key=lambda item: item[1], reverse=True)
+    top = [lane for lane, weight in lanes if weight > 0][:LANE_COUNT]
+    if not top:
+        return "Unclassified"
+    return "/".join(top)
 
 
 def main() -> None:
     with open("data/baseline/directors.json", "r", encoding="utf-8") as handle:
         directors = json.load(handle)
 
-    now = datetime.utcnow().date()
-    recent_30 = 0
-    recent_90 = 0
-    availability_distribution = {}
-    recent_feature_2020 = 0
+    now = datetime.utcnow().date().isoformat()
+    distribution = Counter()
+    lane_signatures = Counter()
+    recent_2020 = 0
 
     for director in directors:
-        last_verified = director.get("availability", {}).get("last_verified")
-        if last_verified:
-            date_obj = datetime.strptime(last_verified, "%Y-%m-%d").date()
-            if date_obj >= now - timedelta(days=30):
-                recent_30 += 1
-            if date_obj >= now - timedelta(days=90):
-                recent_90 += 1
-        status = director.get("availability", {}).get("status", "UNKNOWN")
-        availability_distribution[status] = availability_distribution.get(status, 0) + 1
-        if director.get("last_feature_directed_year", 0) >= 2020:
-            recent_feature_2020 += 1
+        year = director.get("last_feature_directed_year")
+        if year:
+            distribution[year] += 1
+            if year >= 2020:
+                recent_2020 += 1
+        lane_signatures[build_lane_signature(director.get("lane_fingerprint", {}))] += 1
 
     count = len(directors) or 1
-    freshness = {
-        "last_run": now.isoformat(),
-        "director_count": len(directors),
-        "last_verified_30d_percent": round(recent_30 / count * 100, 2),
-        "last_verified_90d_percent": round(recent_90 / count * 100, 2),
-        "availability_distribution": availability_distribution,
-    }
+    fame_sorted = sorted(directors, key=lambda item: item.get("fame_proxy", 0), reverse=True)
+    non_famous_pool = fame_sorted[200:]
+    random.seed(42)
+    sample = random.sample(non_famous_pool, min(50, len(non_famous_pool)))
 
-    write_json("public/data/freshness.json", freshness)
-
-    with open("docs/data_freshness.md", "w", encoding="utf-8") as handle:
-        handle.write("# Data Freshness\n\n")
-        handle.write(f"Last run: {freshness['last_run']}\n\n")
-        handle.write(f"Director count: {freshness['director_count']}\n\n")
-        handle.write(f"Verified <30d: {freshness['last_verified_30d_percent']}%\n\n")
-        handle.write(f"Verified <90d: {freshness['last_verified_90d_percent']}%\n\n")
-
-    sample = random.sample(directors, min(50, len(directors)))
     with open("docs/atlas_stats.md", "w", encoding="utf-8") as handle:
         handle.write("# Atlas Stats\n\n")
+        handle.write(f"Generated: {now}\n\n")
         handle.write(f"Director count: {len(directors)}\n\n")
-        handle.write(f"% with last_feature_directed_year >= 2020: {round(recent_feature_2020 / count * 100, 2)}%\n\n")
-        handle.write("## Sample directors\n")
+        handle.write("## Last feature directed year distribution\n")
+        for year in sorted(distribution.keys(), reverse=True):
+            handle.write(f"- {year}: {distribution[year]}\n")
+        handle.write("\n")
+        handle.write(f"% with last_feature_directed_year >= 2020: {round(recent_2020 / count * 100, 2)}%\n\n")
+        handle.write("## Top 20 lane fingerprints (by frequency)\n")
+        for lane, freq in lane_signatures.most_common(20):
+            handle.write(f"- {lane}: {freq}\n")
+        handle.write("\n")
+        handle.write("## Non-famous coverage sample (excluding top 200 by fame proxy)\n")
         for director in sample:
-            handle.write(f"- {director['name']} ({director['id']})\n")
+            handle.write(
+                f"- {director['name']} ({director['id']}) — last feature {director.get('last_feature_directed_year')}\n"
+            )
 
-    print("Quality report written")
+    print("Atlas stats written")
 
 
 if __name__ == "__main__":
