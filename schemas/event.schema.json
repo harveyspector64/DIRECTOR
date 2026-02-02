@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "id",
+    "director_id",
+    "project_title",
+    "project_type",
+    "status",
+    "confidence",
+    "last_verified",
+    "sources"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "director_id": { "type": "string" },
+    "project_title": { "type": "string" },
+    "project_type": {
+      "type": "string",
+      "enum": ["FEATURE", "TV", "LIMITED", "UNKNOWN"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "IN_TALKS",
+        "ATTACHED",
+        "PREP",
+        "FILMING",
+        "WRAPPED",
+        "POST",
+        "RELEASED",
+        "UNKNOWN"
+      ]
+    },
+    "dates": {
+      "type": ["object", "null"],
+      "properties": {
+        "start": { "type": "string" },
+        "end": { "type": "string" }
+      }
+    },
+    "confidence": { "type": "string", "enum": ["low", "med", "high"] },
+    "last_verified": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url", "outlet", "title"],
+        "properties": {
+          "url": { "type": "string" },
+          "outlet": { "type": "string" },
+          "title": { "type": "string" },
+          "published_date": { "type": "string" },
+          "snippet": { "type": "string" }
+        }
+      }
+    }
+  }
+}

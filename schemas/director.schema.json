@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "last_feature_directed_year",
+    "recent_features",
+    "lane_fingerprint",
+    "assignment_score",
+    "cast_adjacency_top"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "last_feature_directed_year": { "type": "integer" },
+    "recent_features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["film_id", "title", "year", "genres_raw", "genres_normalized", "top_cast"],
+        "properties": {
+          "film_id": { "type": "string" },
+          "title": { "type": "string" },
+          "year": { "type": "integer" },
+          "genres_raw": { "type": "array", "items": { "type": "string" } },
+          "genres_normalized": { "type": "array", "items": { "type": "string" } },
+          "top_cast": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name"],
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "order": { "type": ["integer", "null"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "lane_fingerprint": {
+      "type": "object",
+      "properties": {
+        "Action": { "type": "number" },
+        "Comedy": { "type": "number" },
+        "Thriller": { "type": "number" },
+        "Crime": { "type": "number" },
+        "Horror": { "type": "number" },
+        "Drama": { "type": "number" },
+        "Sci-Fi": { "type": "number" },
+        "Romance": { "type": "number" },
+        "Family/YA": { "type": "number" },
+        "Animation": { "type": "number" },
+        "Other": { "type": "number" }
+      }
+    },
+    "assignment_score": { "type": "number" },
+    "cast_adjacency_top": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["actor_id", "actor_name", "weight"],
+        "properties": {
+          "actor_id": { "type": "string" },
+          "actor_name": { "type": "string" },
+          "weight": { "type": "number" },
+          "last_worked_year": { "type": "integer" }
+        }
+      }
+    },
+    "fame_proxy": { "type": "integer" }
+  }
+}
